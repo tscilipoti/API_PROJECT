@@ -82,13 +82,12 @@ export class ToyStore {
   }
 
   addToy(details) {
-    const newId = this.mToyIdNext;
     this.mToys.push({
       id: ++this.mToyIdNext,
       type: details.type,
       sport: details.sport
     });
-    return newId;
+    return this.mToyIdNext;
   }
 
   // Default return object when no other criteria apply,
