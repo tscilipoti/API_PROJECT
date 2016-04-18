@@ -61,6 +61,13 @@ describe('/src/local/toyStore', function () {
     });
   });
 
+  describe('#getToyByIdNoArg()', function () {
+    it('should throw exception', function () {
+      const sampleStore = ToyStore.initializeStoreWithSampleData();
+      assert.throws(sampleStore.getToyById, Error, 'error thrown');
+    });
+  });
+
   describe('#addToy()', function () {
     it('should return id', function () {
       const sampleStore = ToyStore.initializeStoreWithSampleData();

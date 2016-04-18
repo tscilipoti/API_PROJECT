@@ -8,7 +8,6 @@ import { ToyStore } from './toyStore';
 const store = ToyStore.initializeStoreWithSampleData();
 
 const appRouter = function (app) {
-
   // TODO: add "API" as part of the route?
   app.get('/', function (req, res) {
     res.json({ message: 'you made it to the API!' });

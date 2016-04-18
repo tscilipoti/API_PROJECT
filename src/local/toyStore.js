@@ -15,9 +15,10 @@ export class ToyStore {
   }
 
   getToyById(id) {
+    if (!id) throw new Error('id input is mandatory');
     const filteredToys = this.mToys.filter(ToyStore.getToyByIdCallback, id);
     if (!filteredToys || filteredToys.length !== 1) {
-      throw new Error('zero or more than one toy found for id');
+      throw new Error('zero or more than one toy found for id ' + id.toString());
     }
     return filteredToys;
   }
@@ -81,11 +82,11 @@ export class ToyStore {
     return true;
   }
 
-  addToy(details) {
+  addToy(newToy) {
     this.mToys.push({
       id: ++this.mToyIdNext,
-      type: details.type,
-      sport: details.sport
+      type: newToy.type,
+      sport: newToy.sport
     });
     return this.mToyIdNext;
   }
