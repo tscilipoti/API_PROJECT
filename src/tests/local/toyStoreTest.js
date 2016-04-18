@@ -38,13 +38,13 @@ describe('/src/local/toyStore', function () {
   });
 
   describe('#searchToysTwoParams()', function () {
-    it('should return only one skiing toys', function () {
+    it('should return only one skiing toy', function () {
       const sampleStore = ToyStore.initializeStoreWithSampleData();
       const query = { sport: 'skiing', type: 'boot' };
       const selectedToys = sampleStore.searchToys(query);
       assert(selectedToys, 'there were some toys'); // we got something back
       assert(selectedToys.length === 1, 'we got one toy');
-      assert(selectedToys[0].sport === 'skiing', 'it was a ski boot');
+      assert(selectedToys[0].sport === 'skiing', 'it was a skiing toy');
       assert(selectedToys[0].type === 'boot', 'it was a ski boot');
     });
   });
