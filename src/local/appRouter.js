@@ -1,5 +1,5 @@
 /* eslint strict:0, no-console:0 */
-'use strict';
+// 'use strict';
 
 // reference the ToyStore class
 import { ToyStore } from './toyStore';

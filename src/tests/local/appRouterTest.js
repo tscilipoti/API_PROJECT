@@ -38,6 +38,7 @@ describe('POST /api/Toy', function () {
         assert(receipt.id, 'got id');
         assert(receipt.message === 'toy created!', 'got message');
         done();
+        return 0;
       });
   });
 
@@ -53,6 +54,7 @@ describe('POST /api/Toy', function () {
         assert(toysFromAPI.length >= 1, 'got at least one');
         assert(toysFromAPI[0].type === 'turkey call', 'got a turkey call');
         done();
+        return 0;
       });
   });
 
@@ -81,6 +83,7 @@ describe('GET /api/Toy', function () {
         assert(toysFromAPI.length >= 4, 'there were four toys');
         assert(toysFromAPI[0].sport === 'hiking', 'one of them was hiking');
         done();
+        return 0;
       });
   });
 
@@ -96,6 +99,7 @@ describe('GET /api/Toy', function () {
         assert(toysFromAPI.length === 2, 'there were two toys');
         assert(toysFromAPI[0].sport === 'skiing', 'first toy was a skiing toy');
         done();
+        return 0;
       });
   });
 
