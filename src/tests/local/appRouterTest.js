@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('../../local/appRouter')(app);
 
-describe('POST /Toy', function () {
+describe('POST /api/Toy', function () {
   before(function () {
     server = app.listen(process.env.PORT || 3000, function () {
       console.log('starting up ...');
@@ -27,7 +27,7 @@ describe('POST /Toy', function () {
       type: 'turkey call'
     });
     supertest(app)
-      .post('/Toy')
+      .post('/api/Toy')
       .send(newToy)
       .set('Content-Type', 'application/json')
       .expect(200)
@@ -43,7 +43,7 @@ describe('POST /Toy', function () {
 
   it('should find the new toy on a subsequent call', function (done) {
     supertest(app)
-      .get('/Toy?sport=hunting')
+      .get('/api/Toy?sport=hunting')
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {
@@ -62,7 +62,7 @@ describe('POST /Toy', function () {
   });
 });
 
-describe('GET /Toy', function () {
+describe('GET /api/Toy', function () {
   before(function () {
     server = app.listen(process.env.PORT || 3000, function () {
       console.log('starting up ...');
@@ -71,7 +71,7 @@ describe('GET /Toy', function () {
 
   it('API should return the default list of toys', function (done) {
     supertest(app)
-      .get('/Toy')
+      .get('/api/Toy')
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {
@@ -86,7 +86,7 @@ describe('GET /Toy', function () {
 
   it('API should return only the skiing toys', function (done) {
     supertest(app)
-      .get('/Toy?sport=skiing')
+      .get('/api/Toy?sport=skiing')
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {

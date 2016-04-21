@@ -9,11 +9,11 @@ const store = ToyStore.initializeStoreWithSampleData();
 
 const appRouter = function (app) {
   // TODO: add "API" as part of the route?
-  app.get('/', function (req, res) {
+  app.get('/api', function (req, res) {
     res.json({ message: 'you made it to the API!' });
   });
 
-  app.get('/Toy', function (req, res) {
+  app.get('/api/Toy', function (req, res) {
     // Start with all the toys.
     let selectedToys = store.getToys();
 
@@ -26,7 +26,7 @@ const appRouter = function (app) {
     res.send(selectedToys);
   });
 
-  app.get('/Toy/:id', function (req, res) {
+  app.get('/api/Toy/:id', function (req, res) {
     let selectedToys;
 
     // Caller may have passed in query string filter. Honor if so.
@@ -39,7 +39,7 @@ const appRouter = function (app) {
     res.send(selectedToys);
   });
 
-  app.post('/Toy', function (req, res) {
+  app.post('/api/Toy', function (req, res) {
     const newToy = req.body;
     const newId = store.addToy(newToy);
     res.json({
