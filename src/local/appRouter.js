@@ -10,7 +10,7 @@ const store = ToyStore.initializeStoreWithSampleData();
 const appRouter = function (app) {
   // TODO: add "API" as part of the route?
   app.get('/api', function (req, res) {
-    res.json({ message: 'you made it to the API!' });
+    res.json({ message: 'You made it to the API!' });
   });
 
   app.get('/api/Toy', function (req, res) {

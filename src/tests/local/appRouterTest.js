@@ -2,6 +2,10 @@
 /* eslint strict:0, no-console:0 */
 'use strict';
 
+// TODO: Dave M. Says, "Put more salad!!!"
+// TODO: Put in git hub personal repo and share with team
+// TODO: Add code that handles async pattern using promises (fake long-running call)
+
 let server;
 const assert = require('assert');
 const express = require('express');
@@ -64,7 +68,7 @@ describe('POST /api/Toy', function () {
   });
 });
 
-describe('GET /api/Toy', function () {
+describe('GET /api', function () {
   before(function () {
     server = app.listen(process.env.PORT || 3000, function () {
       console.log('starting up ...');
@@ -98,6 +102,38 @@ describe('GET /api/Toy', function () {
         assert(toysFromAPI, 'got some toys');
         assert(toysFromAPI.length === 2, 'there were two toys');
         assert(toysFromAPI[0].sport === 'skiing', 'first toy was a skiing toy');
+        done();
+        return 0;
+      });
+  });
+
+  it('API should return toy with id 4', function (done) {
+    supertest(app)
+      .get('/api/Toy/4')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err);
+        const toysFromAPI = JSON.parse(res.text);
+        assert(toysFromAPI, 'got a toy');
+        assert(toysFromAPI.length === 1, 'there was one');
+        assert(toysFromAPI[0].sport === 'skiing', 'first toy was a skiing toy');
+        assert(toysFromAPI[0].type === 'boot', 'expected a boot');
+        done();
+        return 0;
+      });
+  });
+
+  it('API should return hello world message', function (done) {
+    supertest(app)
+      .get('/api')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err);
+        const toysFromAPI = JSON.parse(res.text);
+        assert(toysFromAPI, 'got a message');
+        assert(toysFromAPI.message === 'You made it to the API!', 'did not get message');
         done();
         return 0;
       });
